@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 7% 96%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 37 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 37 82% 49%;
+    --primary-light: 37 91% 95%;
+
+    --secondary: 40 7% 92%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 40 7% 92%;
+    --muted-foreground: 0 0% 38%;
+
+    --accent: 37 91% 95%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 91%;
+    --input: 0 0% 91%;
+    --ring: 37 91% 55%;
+
+    --radius: 0.5rem;
+
+    --surface-dark: 40 7% 10%;
+    --surface-dark-elevated: 40 7% 14%;
+
+    --status-ok: 142 71% 45%;
+    --status-warning: 38 92% 50%;
+    --status-critical: 0 84% 60%;
+
+    --whatsapp: 142 70% 49%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 40 7% 10%;
+    --foreground: 0 0% 96%;
+    --card: 40 7% 14%;
+    --card-foreground: 0 0% 96%;
+    --popover: 40 7% 14%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 37 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 7% 18%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 40 7% 18%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 40 7% 18%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 40 7% 20%;
+    --input: 40 7% 20%;
+    --ring: 37 91% 55%;
+    --sidebar-background: 40 7% 10%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 37 91% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 7% 14%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 40 7% 18%;
+    --sidebar-ring: 37 91% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .bg-surface-dark {
+    background-color: hsl(var(--surface-dark));
+  }
+
+  .bg-surface-dark-elevated {
+    background-color: hsl(var(--surface-dark-elevated));
+  }
+
+  .text-status-ok {
+    color: hsl(var(--status-ok));
+  }
+
+  .text-status-warning {
+    color: hsl(var(--status-warning));
+  }
+
+  .text-status-critical {
+    color: hsl(var(--status-critical));
+  }
+
+  .bg-status-ok {
+    background-color: hsl(var(--status-ok));
+  }
+
+  .bg-status-warning {
+    background-color: hsl(var(--status-warning));
+  }
+
+  .bg-status-critical {
+    background-color: hsl(var(--status-critical));
+  }
+}
+
+@keyframes counter-tick {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gauge-fill {
+  from { stroke-dashoffset: var(--gauge-circumference); }
+  to { stroke-dashoffset: var(--gauge-target); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-counter-tick {
+  animation: counter-tick 0.6s ease-out forwards;
+}
+
+.animate-gauge-fill {
+  animation: gauge-fill 1.2s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: white !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #1A1A1A !important;
+  }
+
+  .pdf-page {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 15mm 20mm;
+  }
+
+  .print-break-before {
+    page-break-before: always;
+  }
+
+  .print-avoid-break {
+    page-break-inside: avoid;
+  }
+}
